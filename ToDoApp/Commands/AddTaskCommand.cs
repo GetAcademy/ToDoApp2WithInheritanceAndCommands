@@ -9,20 +9,9 @@
 
         public override void Run()
         {
-            Console.WriteLine("skriv inn navn:");
-            var name = Console.ReadLine();
-            Console.WriteLine("Skriv inn når skal den være ferdig (dd/mm/yyyy):");
-            DateTime dueDate;
-            if (DateTime.TryParse(Console.ReadLine(), out DateTime dueDateFromUser))
-            {
-                dueDate = dueDateFromUser;
-            }
-            else
-            {
-                Console.WriteLine("Ugyldig datoformat. Bruker dagens dato.");
-                dueDate = DateTime.Today;
-            }
-            _todoApp.AddTask(name, dueDate);
+            var name = AskForString("skriv inn navn:");
+            var dateTime = AskForDateTime("Skriv inn når skal den være ferdig (dd/mm/yyyy):")
+            _todoApp.AddTask(name, dateTime);
 
         }
     }
